@@ -1,0 +1,9 @@
+.box{
+  width: 50px;
+  height: 100px;
+  background-color: red;
+}
+span{
+  word-wrap:break-word;
+  word-break: break-all;
+}

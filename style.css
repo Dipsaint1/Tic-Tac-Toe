@@ -1,9 +1,30 @@
-.box{
-  width: 50px;
-  height: 100px;
-  background-color: red;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-span{
-  word-wrap:break-word;
-  word-break: break-all;
+
+:root{
+  --cell-size: 100px;
+}
+
+.board{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell{
+  width: var(--cell-size);
+  height: var(--cell-size);
+  font-size: calc(var(--cell-size) * 1);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer; 
 }

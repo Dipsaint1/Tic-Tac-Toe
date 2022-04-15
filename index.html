@@ -10,19 +10,28 @@
 
 </head>
 <body>
-    <div class="container-md justify-content-center align-items-center mt-5">
+    <div class="container-md justify-content-center align-items-center mt-2">
         <div class="display-6 text-center"> TIC TAC TOE </div>
 
-        <div class="board mt-5">
-            <div class="cell border-top-0 border-start-0 border-bottom-0">X</div>
-            <div class="cell border-top-0 border-start-0 border-bottom-0">O</div>
-            <div class="cell border-top-0 border-start-0 border-end-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-end-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-bottom-0">X</div>
-            <div class="cell border-start-0 border-bottom-0 border-end-0">X</div>
+        <div class="row justify-content-center align-items-center mt-2">
+            <div id="turn" class="display-6 bg-info p-2 col col-sm-12 col-md-6 text-center"></div>
+        </div>
+
+        <div class="board mt-2">
+            <div class="cell border-top-0 border-start-0 border-bottom-0"></div>
+            <div class="cell border-top-0 border-start-0 border-bottom-0"></div>
+            <div class="cell border-top-0 border-start-0 border-end-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-end-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-bottom-0"></div>
+            <div class="cell border-start-0 border-bottom-0 border-end-0"></div>
+        </div>
+
+        <div class="winning-message" id="winningMessage">
+            <div class="winning-message-text"></div>
+            <button id="restart-button" class="btn btn-lg border-dark bg-dark btn-outline-dark">Restart</button>
         </div>
     </div>
 

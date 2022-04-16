@@ -1,6 +1,8 @@
 let nextTurn = true;
 let turn = document.getElementById("turn");
 let nextPlayer = "Player 1";
+let winningMessageText = document.querySelector(".winning-message-text");
+const winningMessage = document.querySelector(".winning-message");
 
 const winningCombinations = [
   [0, 1, 2],
@@ -24,28 +26,17 @@ class TicTacToe{
 
   handleClick(e){
 
-    
-    // if(nextTurn){
-    //   e.target.innerText = "x";
-    //   nextPlayer = "Player 2";
-    // }
-
-    // else{e.target.innerText = "o";
-    //   nextPlayer = "Player 1";
-    // }
     TicTacToe.play(nextTurn, e);
 
     if(TicTacToe.checkXWin()){
-      console.log("X Wins");
-      // endGame();
+      TicTacToe.endGame("Player X");
     }
 
     else if(TicTacToe.checkOWin()){
-      console.log("O Wins");
-      // endGame();
+      TicTacToe.endGame("Player O");
     }
     else if(TicTacToe.isDraw()){
-      // endGame();
+      TicTacToe.endGame(true);
     }
     
     turn.innerText = `${nextPlayer}'s Turn`;
@@ -64,7 +55,6 @@ class TicTacToe{
       e.target.innerText = "x";
       nextPlayer = "Player 2";
     }
-
     else {e.target.innerText = "o";
       nextPlayer = "Player 1";
     }
@@ -94,11 +84,21 @@ class TicTacToe{
   }
 
   static isDraw(){
-
+    // Check if all the cells are filled up
+    const cells = TicTacToe.cells();
+    return cells.every(cell => {
+      return cell.innerText === "X" || cell.innerText === "O";
+    });
   }
 
-  static findIndex(e){
-
+  static endGame(draw, winner = "draw"){
+    if(draw){
+      winningMessageText.textContent = `Draw`;
+    }
+    else{
+      winningMessageText.textContent = `${winner} Wins`;
+    }
+    winningMessage.classList.add("show");
   }
   
 }

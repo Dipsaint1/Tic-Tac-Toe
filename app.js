@@ -29,14 +29,15 @@ class TicTacToe{
     TicTacToe.play(nextTurn, e);
 
     if(TicTacToe.checkXWin()){
-      TicTacToe.endGame("Player X");
+      TicTacToe.endGame(false, "Player X");
     }
 
     else if(TicTacToe.checkOWin()){
-      TicTacToe.endGame("Player O");
+      TicTacToe.endGame(false, "Player O");
+
     }
     else if(TicTacToe.isDraw()){
-      TicTacToe.endGame(true);
+      TicTacToe.endGame();
     }
     
     turn.innerText = `${nextPlayer}'s Turn`;
@@ -91,14 +92,14 @@ class TicTacToe{
     });
   }
 
-  static endGame(draw, winner = "draw"){
+  static endGame(draw = true, winner = "draw"){
     if(draw){
       winningMessageText.textContent = `Draw`;
     }
     else{
       winningMessageText.textContent = `${winner} Wins`;
     }
-    winningMessage.classList.add("show");
+    winningMessage.classList.toggle("show");
   }
   
 }

@@ -19,10 +19,13 @@ const winningCombinations = [
 class TicTacToe{
   constructor(){
 
+    
+
     this.game(TicTacToe.cells());
 
     restartBtn.addEventListener("click", () => {
       winningMessage.classList.remove("show");
+      turn.style.display = "block";
 
       const cells = document.querySelectorAll(".cell");
 
@@ -30,7 +33,7 @@ class TicTacToe{
         cell.innerText = "";
         cell.removeEventListener("click", this.handleClick);
         nextTurn = true; 
-        nextPlayer = "Player 1";
+        // nextPlayer = "Player 1";
         cell.addEventListener("click", this.handleClick, { once: true});
       });
     });
@@ -41,7 +44,6 @@ class TicTacToe{
   }
 
   handleClick(e){
-
     TicTacToe.play(nextTurn, e);
 
     if(TicTacToe.checkXWin()){
@@ -116,6 +118,7 @@ class TicTacToe{
       winningMessageText.textContent = `${winner} Wins`;
     }
 
+    turn.style.display = "none";
     nextPlayer = "Player X";
     winningMessage.classList.add("show");
   }

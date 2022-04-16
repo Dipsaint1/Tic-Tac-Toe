@@ -1,6 +1,6 @@
 let nextTurn = true;
 let turn = document.getElementById("turn");
-let nextPlayer = "Player 1";
+let nextPlayer = "Player X";
 let winningMessageText = document.querySelector(".winning-message-text");
 const winningMessage = document.querySelector(".winning-message");
 const restartBtn = document.getElementById("restart-button");
@@ -70,10 +70,10 @@ class TicTacToe{
   static play(nextTurn, e){
     if (nextTurn){
       e.target.innerText = "x";
-      nextPlayer = "Player 2";
+      nextPlayer = "Player O";
     }
     else {e.target.innerText = "o";
-      nextPlayer = "Player 1";
+      nextPlayer = "Player X";
     }
   }
 
@@ -115,8 +115,8 @@ class TicTacToe{
     else{
       winningMessageText.textContent = `${winner} Wins`;
     }
-    
-    nextPlayer = "Player 1";
+
+    nextPlayer = "Player X";
     winningMessage.classList.add("show");
   }
 

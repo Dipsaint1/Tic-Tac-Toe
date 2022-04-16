@@ -1,2 +1,3 @@
 # Tic-Tac-Toe
-This game can ony ba played by 2 players
+The game can only be played by 2 players; player X and player O.
+

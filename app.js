@@ -3,6 +3,7 @@ let turn = document.getElementById("turn");
 let nextPlayer = "Player 1";
 let winningMessageText = document.querySelector(".winning-message-text");
 const winningMessage = document.querySelector(".winning-message");
+const restartBtn = document.getElementById("restart-button");
 
 const winningCombinations = [
   [0, 1, 2],
@@ -17,7 +18,22 @@ const winningCombinations = [
 
 class TicTacToe{
   constructor(){
+
     this.game(TicTacToe.cells());
+
+    restartBtn.addEventListener("click", () => {
+      winningMessage.classList.remove("show");
+
+      const cells = document.querySelectorAll(".cell");
+
+      [...cells].forEach(cell => {
+        cell.innerText = "";
+        cell.removeEventListener("click", this.handleClick);
+        nextTurn = true; 
+        nextPlayer = "Player 1";
+        cell.addEventListener("click", this.handleClick, { once: true});
+      });
+    });
   }
 
   static cells(){
@@ -99,10 +115,13 @@ class TicTacToe{
     else{
       winningMessageText.textContent = `${winner} Wins`;
     }
-    winningMessage.classList.toggle("show");
+    
+    nextPlayer = "Player 1";
+    winningMessage.classList.add("show");
   }
-  
+
 }
 
 new TicTacToe();
+
 

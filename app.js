@@ -15,38 +15,41 @@ const winningCombinations = [
 
 class TicTacToe{
   constructor(){
-    this.game(this.cells());
+    this.game(TicTacToe.cells());
   }
 
-  cells(){
+  static cells(){
     return Array.from(document.querySelectorAll(".cell"));   // Change NodeList to Array
   }
 
   handleClick(e){
-    
-    if(nextTurn){
-      e.target.innerText = "x";
-      nextPlayer = "Player 2";
-    }
-
-    else{e.target.innerText = "o";
-      nextPlayer = "Player 1";
-    }
-
-    if(checkWin){
-      endGame();
-    }
-
-    else if(isDraw()){
-      endGame();
-    }
-
-    else{
-      turn.innerText = `${nextPlayer}'s Turn`;
-      TicTacToe.swapTurns();
-    }
 
     
+    // if(nextTurn){
+    //   e.target.innerText = "x";
+    //   nextPlayer = "Player 2";
+    // }
+
+    // else{e.target.innerText = "o";
+    //   nextPlayer = "Player 1";
+    // }
+    TicTacToe.play(nextTurn, e);
+
+    if(TicTacToe.checkXWin()){
+      console.log("X Wins");
+      // endGame();
+    }
+
+    else if(TicTacToe.checkOWin()){
+      console.log("O Wins");
+      // endGame();
+    }
+    else if(TicTacToe.isDraw()){
+      // endGame();
+    }
+    
+    turn.innerText = `${nextPlayer}'s Turn`;
+    TicTacToe.swapTurns();
   }
 
   game(cells){
@@ -56,21 +59,45 @@ class TicTacToe{
     });
   }
 
+  static play(nextTurn, e){
+    if (nextTurn){
+      e.target.innerText = "x";
+      nextPlayer = "Player 2";
+    }
+
+    else {e.target.innerText = "o";
+      nextPlayer = "Player 1";
+    }
+  }
+
   static swapTurns(){
     nextTurn = !nextTurn;
     return nextTurn;
   }
 
-  checkWin(){
-    const cells = this.cells();
+  static checkXWin(){
+    const cells = TicTacToe.cells();
     return winningCombinations.some(combination => {
-      return combination.every(index, () => {
-        return cells[index].innerText === "x";
+      return combination.every(index => {
+        return cells[index].innerText === "X";
       });
     });
   }
 
-  isDraw(){
+  static checkOWin(){
+    const cells = TicTacToe.cells();
+    return winningCombinations.some(combination => {
+      return combination.every(index => {
+        return cells[index].innerText === "O";
+      });
+    });
+  }
+
+  static isDraw(){
+
+  }
+
+  static findIndex(e){
 
   }
   

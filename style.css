@@ -8,6 +8,9 @@
   --cell-size: 100px;
 }
 
+#turn{
+  background-color: lightseagreen;
+}
 .board{
   display: grid;
   justify-content: center;
@@ -28,6 +31,8 @@
   cursor: pointer; 
   font-weight: bold;
   text-transform: capitalize;
+  background-color: black;
+  color: white;
   
 }
 

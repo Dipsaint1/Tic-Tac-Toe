@@ -19,21 +19,16 @@ const winningCombinations = [
 class TicTacToe{
   constructor(){
 
-    
-
     this.game(TicTacToe.cells());
 
     restartBtn.addEventListener("click", () => {
       winningMessage.classList.remove("show");
       turn.style.display = "block";
-
-      const cells = document.querySelectorAll(".cell");
-
-      [...cells].forEach(cell => {
+      const cells = TicTacToe.cells();
+      cells.forEach(cell => {
         cell.innerText = "";
         cell.removeEventListener("click", this.handleClick);
         nextTurn = true; 
-        // nextPlayer = "Player 1";
         cell.addEventListener("click", this.handleClick, { once: true});
       });
     });
@@ -123,6 +118,9 @@ class TicTacToe{
     winningMessage.classList.add("show");
   }
 
+  // resetBoard(){
+
+  // }
 }
 
 new TicTacToe();
